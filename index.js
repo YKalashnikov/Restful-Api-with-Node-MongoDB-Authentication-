@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRouter = require('./routes/auth');
+const accountRoute = require('./routes/account.js');
 const app = express();
 
 dotenv.config();
@@ -13,6 +14,7 @@ mongoose.connect(process.env.CONNECT_DB,{ useNewUrlParser: true },()=>console.lo
 //Middleware
 app.use(express.json());
 app.use('/api/user', authRouter);
+app.use('/api/accounts', accountRoute)
 //Routes
 
 
